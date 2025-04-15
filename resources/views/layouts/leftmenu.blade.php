@@ -5,6 +5,16 @@
         <span class="item-name">Dashboard</span>
     </a>
 </li>
+@if(can('patientreports'))
+
+<li class="nav-item">
+    <a class="nav-link {!! Request::is('patientreports') ? 'active' : '' !!}" aria-current="page" href="{{ route('patientreports.index') }}" >
+        <i class="icon im im-icon-Radioactive"></i>
+        <span class="item-name">Patient Reports</span>
+    </a>
+</li>
+
+@endif
 
 {{-- Users Management --}}
 @if(can('user_management'))
@@ -82,6 +92,16 @@
             </a>
         </li>
         @endif
+        @if(can('image_categories'))
+        <li class="nav-item">
+            <a class="nav-link {!! Request::is('imageCategories*') ? 'active' : '' !!}" href="{{ route('imageCategories.index') }}">
+                <i class="icon im im-icon-Structure"></i>
+                <i class="sidenav-mini-icon"> C </i>
+                <span class="item-name">Image Categories</span>
+            </a>
+        </li>
+        @endif
+       
         {{-- Add other settings items here --}}
     </ul>
 </li>

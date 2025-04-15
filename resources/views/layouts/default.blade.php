@@ -239,6 +239,9 @@ aria-expanded="false" aria-label="Toggle navigation">
 
     @include('layouts/datatables_js')
 
+    @yield('script')
+
+
 
 
 </body>

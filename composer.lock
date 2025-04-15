@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "365f99a38612bab05ffb45fd4aaa5ab4",
+    "content-hash": "71254c3aeb1090096f307ca4ec755ad0",
     "packages": [
         {
             "name": "brick/math",
@@ -633,6 +633,55 @@
                 }
             ],
             "time": "2025-03-06T22:45:56+00:00"
+        },
+        {
+            "name": "elievischel/laravel-dicom",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/elievischel/laravel-dicom.git",
+                "reference": "a92f70ce30b0e3112a93589ea30d10db4af350c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/elievischel/laravel-dicom/zipball/a92f70ce30b0e3112a93589ea30d10db4af350c7",
+                "reference": "a92f70ce30b0e3112a93589ea30d10db4af350c7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Nanodicom.php",
+                    "src/Dicom_Simple.php"
+                ],
+                "psr-4": {
+                    "elievischel\\laravelDicom\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "elie vischel",
+                    "email": "elie.vischel@gmail.com"
+                }
+            ],
+            "description": "PHP DICOM for LARAVEL",
+            "keywords": [
+                "dicom",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/elievischel/laravel-dicom/issues",
+                "source": "https://github.com/elievischel/laravel-dicom/tree/master"
+            },
+            "time": "2024-07-24T10:13:15+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -2618,6 +2667,67 @@
                 }
             ],
             "time": "2024-09-21T08:32:55+00:00"
+        },
+        {
+            "name": "mkinyua53/laravel-dicom",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/MKinyua53/laravel-dicom.git",
+                "reference": "a1611c39dba76896484ddc8e3fee5ccd173aca2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/MKinyua53%2Flaravel-dicom/repository/archive.zip?sha=a1611c39dba76896484ddc8e3fee5ccd173aca2f",
+                "reference": "a1611c39dba76896484ddc8e3fee5ccd173aca2f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "LaravelDicom": "Mkinyua53\\LaravelDicom\\LaravelDicomFacade"
+                    },
+                    "providers": [
+                        "Mkinyua53\\LaravelDicom\\LaravelDicomServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mkinyua53\\LaravelDicom\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mwatha Kinyua",
+                    "email": "mwatha.kinyua@hotmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package based on https://pear.php.net/manual/en/package.fileformats.file-dicom.intro.php",
+            "homepage": "https://github.com/mkinyua53/laravel-dicom",
+            "keywords": [
+                "laravel-dicom",
+                "mkinyua53"
+            ],
+            "support": {
+                "issues": "https://gitlab.com/MKinyua53/laravel-dicom/-/issues",
+                "source": "https://gitlab.com/MKinyua53/laravel-dicom/-/tree/0.1.1"
+            },
+            "time": "2024-09-02T21:57:00+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -11102,7 +11212,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": {
+        "elievischel/laravel-dicom": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

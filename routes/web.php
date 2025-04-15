@@ -5,6 +5,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AttendenceController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\DicomController;
 
 
 include 'demo.php';
@@ -56,8 +57,16 @@ Route::group(['middleware' => 'auth'], function () {
     include 'web_builder.php';
 
 });
+
+Route::post('/upload-dicom', 'DicomController@uploadAndReadDicom');
+
+
 Route::get('empty_table', 'JoshController@emptyTable');
 Route::get('remove_all_files', 'JoshController@remove_all_files');
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
 Route::get('{name?}', 'JoshController@showView');
 
