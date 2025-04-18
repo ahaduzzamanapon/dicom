@@ -13,65 +13,41 @@
             Dashboard
             <small>Control panel</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <a href="{{ url('/') }}">
-                    <i class="fa fa-dashboard"></i> Dashboard
-                </a>
-            </li>
-        </ol>
     </section>
     <section class="content">
         <div class="row">
-            <div class="col-md-3">
-                <div class="card card-primary card-outline" style="height: 280px;">
+            <div class="col-md-6">
+                <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Total Users</h3>
+                        <h3 class="card-title">Active Doctors List</h3>
                     </div>
                     <div class="card-body">
-                        <h1 class="text-center">150</h1>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary btn-block">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-success card-outline" style="height: 280px;">
-                    <div class="card-header">
-                        <h3 class="card-title">Bounce Rate</h3>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="text-center">53<sup style="font-size: 20px">%</sup></h1>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-success btn-block">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-warning card-outline" style="height: 280px;">
-                    <div class="card-header">
-                        <h3 class="card-title">User Registrations</h3>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="text-center">44</h1>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-warning btn-block">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-danger card-outline" style="height: 280px;">
-                    <div class="card-header">
-                        <h3 class="card-title">Unique Visitors</h3>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="text-center">65</h1>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-danger btn-block">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Name</th>
+                                    <th style="width: 40px">Designation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $users = \App\Models\User::select('users.*', 'roles.name as role', 'designations.desi_name as designation')
+                                            ->leftjoin('roles', 'users.group_id', '=', 'roles.id')
+                                            ->leftjoin('designations', 'users.designation_id', '=', 'designations.id')
+                                            ->where('roles.key', '=', 'doctor')
+                                            ->where('users.last_activity', '>', now()->subMinutes(3))
+                                            ->get();
+                                @endphp
+                                @foreach ($users as $index => $doctor)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $doctor->name . ' ' . $doctor->last_name }}</td>
+                                        <td>{{ $doctor->designation }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

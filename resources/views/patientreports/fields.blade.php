@@ -34,7 +34,6 @@
         <div class="border rounded p-3 mb-4">
             <h6 class="mb-3 text-primary">Patient Information</h6>
             <div class="row g-3">
-
                 <div class="col-md-3">
                     <label for="patientId" class="form-label">Patient ID</label>
                     {!! Form::text('patientId', null, ['class' => 'form-control']) !!}
@@ -59,27 +58,26 @@
                     <label for="refBy" class="form-label">Referred By</label>
                     {!! Form::text('refBy', null, ['class' => 'form-control']) !!}
                 </div>
-
-                <div class="col-md-3">
-                    <label for="doctor" class="form-label">Doctor</label>
-                    {!! Form::text('doctor', null, ['class' => 'form-control']) !!}
-                </div>
-
                 <div class="col-md-3">
                     <label for="type" class="form-label">Type</label>
                     {!! Form::text('type', null, ['class' => 'form-control']) !!}
                 </div>
-
+            </div>
+            <div class="mb-4">
+                <label for="patientHistory" class="form-label">Patient History</label>
+                {!! Form::textarea('patientHistory', null, ['class' => 'form-control', 'rows' => 3]) !!}
+            </div>
+        </div>
+        <div class="border rounded p-3 mb-4">
+            <h6 class="mb-3 text-primary">Doctor Information</h6>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="doctor" class="form-label">Select Doctor</label>
+                    {!! Form::select('doctor', \App\Models\User::where('group_id', \App\Models\RoleAndPermission::where('key', 'doctor')->value('id'))->pluck('name', 'id')->prepend('All'), null, ['class' => 'form-select']) !!}
+                </div>
             </div>
         </div>
 
-        <!-- Patient History -->
-        <div class="mb-4">
-            <label for="patientHistory" class="form-label">Patient History</label>
-            {!! Form::textarea('patientHistory', null, ['class' => 'form-control', 'rows' => 3]) !!}
-        </div>
-
-        <!-- Actions -->
         <div class="text-end">
             {!! Form::submit('Save', ['class' => 'btn btn-primary me-2']) !!}
             <a href="{{ route('patientreports.index') }}" class="btn btn-outline-danger">Cancel</a>

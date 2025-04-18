@@ -56,9 +56,25 @@
       .nav-item {
           margin-top: 7px !important;
       }
+      * {
+            padding: 0;
+            margin: 0;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .border {
+            border: var(--bs-border-width) var(--bs-border-style) #4e4e4e !important;
+        }
     </style>
 
 </head>
+
+    <?php if(Auth::user()): ?>
+        <?php
+            $user = Auth::user();
+            \Illuminate\Support\Facades\DB::table('users')->where('id', $user->id)->update(['last_activity' => \Illuminate\Support\Carbon::now()]);
+        ?>
+    <?php endif; ?>
 
 
 
